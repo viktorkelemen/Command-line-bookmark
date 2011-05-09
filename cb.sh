@@ -17,7 +17,7 @@ path=`echo $line | awk -F "," '{ print $2 }'`
 
 if [ -z "$path" ] || [ $path == `pwd` ]
 then
-    $cmd
+    $cmd $2 $3 $4
 else
     echo "No command with this path."
 fi
