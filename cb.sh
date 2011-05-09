@@ -9,15 +9,13 @@ test $# -eq 0 -o "$1" = "--help" && {
 }
 
 shortcut=$1
+dir=`pwd`
 
-line=`awk -F "," '{ if ($1 == "'$shortcut'") print $2,",",$3; }' ~/clibookmark.commands`
+cmd=`awk -F "," '{ if ($1 == "'$shortcut'" && ($3 == "'$dir'" || $3 == "")) print $2; }' ~/clibookmark.commands`
 
-cmd=`echo $line | awk -F "," '{ print $1 }'`
-path=`echo $line | awk -F "," '{ print $2 }'`
-
-if [ -z "$path" ] || [ $path == `pwd` ]
+if [ -z "$cmd" ]
 then
-    $cmd $2 $3 $4
-else
     echo "No command with this path."
+else
+    $cmd $2 $3 $4
 fi
