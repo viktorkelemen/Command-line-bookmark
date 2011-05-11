@@ -9,9 +9,8 @@ test $# -eq 0 -o "$1" = "--help" && {
 }
 
 shortcut=$1
-dir=`pwd`
 
-cmd=`awk -F "," '{ if ($1 == "'$shortcut'" && ($3 == "'$dir'" || $3 == "")) print $2; }' ~/clibookmark.commands`
+cmd=`awk -F "," '{ if ($1 == "'$shortcut'" && system($3) == 0) print $2; }' ~/clibookmark.commands`
 
 if [ -z "$cmd" ]
 then
