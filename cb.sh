@@ -2,9 +2,8 @@
 #/ Usage: cb.sh <shortcut>
 set -e
 
-test $# -eq 0 -o "$1" = "--help" && {
-    grep '^#/' <"$0" |
-    cut -c4-
+test $# -eq 0 && {
+    awk -F "," '{ if (system($3) == 0) print $1; }' ~/clibookmark.commands
     exit 2
 }
 
