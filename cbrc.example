@@ -1,0 +1,5 @@
+# please put your .cbrc file into your $HOME folder
+# make sure that your file start with '.'
+start,script/server,test `pwd` = "/Users/viktor/work/cookpad"
+rbash,source .bash_profile
+httpcode,curl --write-out %{http_code} --silent --output /dev/null

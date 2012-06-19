@@ -1,4 +1,0 @@
-start,script/server,test `pwd` = "/Users/viktor/work/cookpad"
-fullspec,rake cookpad:spec[8],test `pwd` = "/Users/viktor/work/cookpad"
-rbash,source .bash_profile
-httpcode,curl --write-out %{http_code} --silent --output /dev/null
